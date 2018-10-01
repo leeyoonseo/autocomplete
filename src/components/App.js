@@ -35,23 +35,36 @@ class App extends Component {
     ]
   }
 
-  handleChange = (e) => {
+  handleChange = ({target}) => {
     this.setState({
-      keyWord : e.target.value
+      keyWord : target.value
     });
   }
 
   handleOnClick = () => {
+    console.log('click!');
+  }
 
+  handleOnKeyDown = (e) => {
+    if(gerArrowKeyDirText(e) == 'down') {
+      console.log('화살표 아래');
+      const list = document.querySelector('.list');
+      console.log(list.find('.list-item'));
+
+      // if(list.firstElementChild('.selected')) alert(1);
+
+
+    }
   }
 
   render() {
     const {list, keyWord} = this.state;
+    const {handleChange, handleOnClick, handleOnKeyDown} = this;
     
     return (
       <div className="app">
-        <Input onChange={this.handleChange}/>
-        <Button />
+        <Input onChange={handleChange} onKeyDown={handleOnKeyDown}/>
+        <Button onClick={handleOnClick} />
         <List list={list} keyWord={keyWord}/>
       </div>
     );
@@ -59,3 +72,13 @@ class App extends Component {
 }
 
 export default App;
+
+function gerArrowKeyDirText({keyCode}){
+  switch(keyCode){
+    case 37 : return 'left';
+    case 38 : return 'up'
+    case 39 : return 'right'
+    case 40 : return 'down'
+    default : return false;
+  }
+}
