@@ -1,8 +1,9 @@
 {
-  "name": "study-autocomplete",
+  "name": "autocomplete",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "build": "^0.1.4",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-scripts": "1.1.5"
@@ -11,6 +12,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "homepage": "https://leeyoonseo/github.io/autocomplete",
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
